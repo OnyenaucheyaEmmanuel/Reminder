@@ -26,6 +26,7 @@ def form_view(request):
 
             # Attach HTML message
             html_message = f"""
+                <img src="https://swebslimited.com/assets/img/logoo.jpg" alt="Logo">
                 <p>Hello {form_entry.name},</p>
                 <p>Thank you for using Swebs Limited. Your POF has been disbursed.</p>
                 <p>Please note that the funds will be in your account for {form_entry.expiration_days} days.</p>
@@ -52,6 +53,7 @@ def form_view(request):
             for reminder_date in reminder_dates:
                 reminder_subject = 'SWEBS POF REMINDER'
                 reminder_message = f"""
+                    <img src="https://swebslimited.com/assets/img/logoo.jpg" alt="Logo">
                     <p>Hello {form_entry.name},</p>
                     <p>This is a reminder that your POF will be due on {expiration_date}.</p>
                     <p>Kindly go to the bank and print your bank statement before the expiry date.</p>
