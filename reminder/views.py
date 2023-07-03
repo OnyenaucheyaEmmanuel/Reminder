@@ -17,7 +17,7 @@ def form_view(request):
             expiration_date = start_date + timedelta(days=expiration_days)
 
             # Send welcome email to the user
-            subject = 'SWEBS POF DISBURSED SUCCESSFULLY'
+            subject = 'SWEBS LIMITED'
             from_email = 'info@swebslimited.com'
             to_email = form_entry.email
 
@@ -26,7 +26,6 @@ def form_view(request):
 
             # Attach HTML message
             html_message = f"""
-             <img src="https://swebslimited.com/assets/img/logoo.jpg" alt="Logo">
                 <p>Hello {form_entry.name},</p>
                 <p>Thank you for using Swebs Limited. Your POF has been disbursed.</p>
                 <p>Please note that the funds will be in your account for {form_entry.expiration_days} days.</p>
@@ -35,7 +34,7 @@ def form_view(request):
                 <p>Start Date: {start_date}</p>
                 <p>Stop Date: {expiration_date}</p>
                 <p>If you have any questions, please send us an email at ugochi@swebslimited.com or call 09039525017 or 09017394719</p>
-             
+                <img src="https://swebslimited.com/assets/img/logoo.jpeg" alt="Logo">
             """
             email.attach_alternative(html_message, "text/html")
 
@@ -46,15 +45,13 @@ def form_view(request):
             reminder_dates = [
                 expiration_date - timedelta(days=3),
                 expiration_date - timedelta(days=2),
-                expiration_date - timedelta(days=1),
-                expiration_date - timedelta(days=0),
+                expiration_date - timedelta(days=1)
             ]
 
             # Send reminder emails
             for reminder_date in reminder_dates:
                 reminder_subject = 'SWEBS POF REMINDER'
                 reminder_message = f"""
-                     <img src="https://swebslimited.com/assets/img/logoo.jpg" alt="Logo">
                     <p>Hello {form_entry.name},</p>
                     <p>This is a reminder that your POF will be due on {expiration_date}.</p>
                     <p>Kindly go to the bank and print your bank statement before the expiry date.</p>
@@ -64,9 +61,8 @@ def form_view(request):
                     <p>Stop Date: {expiration_date}</p>
                     <p>You also have the option to extend the loan. If you wish to extend, kindly contact us before the expiry date.</p>
                     <p>Note: If you have paid for an extension, kindly disregard this email as it is automated.</p>
-                    
                     <p>If you have any questions, please send us an email at ugochi@swebslimited.com or call 09039525017 or 09017394719</p>
-                 
+                    <img src="https://swebslimited.com/assets/img/logoo.jpeg" alt="Logo">
                 """
 
                 # Create EmailMultiAlternatives object for reminder email
